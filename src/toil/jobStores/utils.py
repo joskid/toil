@@ -109,3 +109,10 @@ def retry(delays=(0, 1, 1, 4, 16, 64), timeout=300, predicate=never):
             yield
 
         yield single_attempt()
+
+
+def log_delete_completed(log, locator, existed):
+    if existed:
+        log.info("Successfully deleted job store at '%s'.", locator)
+    elif not existed:
+        log.info("No job store found at '%s'.", locator)
