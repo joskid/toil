@@ -571,6 +571,13 @@ Example::
 
             toil.exportFile(outputFileID, 'file:///some/other/local/path')
 
+
+There are some trade-offs to file staging. For example it may be more efficient to directly download
+a large file if it is used once rather than importing it. Note that toil-scripts/lib contains common
+functionality for downloading URLs. Further imports from S3 will be more efficient if the source is
+also an S3 bucket in the same region. Finally, per-sample files should be imported on a worker not
+the leader.
+
 Services
 --------
 
